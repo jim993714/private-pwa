@@ -1,0 +1,63 @@
+{
+  "name": "private-pwa",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 8089 --host",
+    "test": "vite --mode test --port 8089 --host",
+    "pre": "vite --mode pre --port 8089 --host",
+    "prod": "vite --mode prod --port 8089 --host",
+    "build:dev": "rimraf dist && vite build --mode dev",
+    "build:test": "rimraf dist && vite build --mode test",
+    "build:pre": "rimraf dist && vite build --mode pre",
+    "build:pro": "rimraf dist && vite build --mode pro",
+    "preview": "vite preview",
+    "clean:cache": "npx rimraf node_modules/.cache/ && npx rimraf node_modules/.vite",
+    "postinstall": "npx simple-git-hooks",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@zsdx/eslint-config": "^0.1.4",
+    "eslint": "8.56.0",
+    "lint-staged": "15.0.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.11.1",
+    "stylelint": "15.10.0",
+    "stylelint-config-html": "1.1.0",
+    "stylelint-config-prettier": "9.0.5",
+    "stylelint-config-recommended-vue": "1.5.0",
+    "stylelint-config-standard": "29.0.0",
+    "stylelint-order": "6.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.7"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx --no-install commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "stylelint --fix"
+    ],
+    "*.{less,scss,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@zsdx"
+  }
+}

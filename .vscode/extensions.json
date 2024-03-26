@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker"]
+}
